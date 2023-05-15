@@ -2,9 +2,11 @@
   "name": "@wopjs/template",
   "version": "0.1.0",
   "description": "Collection of common utilities.",
-  "type": "module",
-  "exports": "./dist/index.js",
+  "repository": "wopjs/template",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "sideEffects": false,
   "files": [
     "src",
     "dist"

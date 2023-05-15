@@ -3,7 +3,7 @@ import mangleCache from "./mangle-cache.json";
 
 export default defineConfig({
   entry: ["src/index.ts"],
-  format: "esm",
+  format: ["cjs", "esm"],
   target: "esnext",
   clean: true,
   treeshake: true,
