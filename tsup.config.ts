@@ -1,4 +1,5 @@
 import { defineConfig } from "tsup";
+
 import mangleCache from "./mangle-cache.json";
 
 export default defineConfig({
