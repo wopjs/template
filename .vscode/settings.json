@@ -4,9 +4,10 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
-    "source.addMissingImports": true
+    "source.addMissingImports": true,
+    "source.organizeImports": false
   },
-  "eslint.validate": ["javascript", "javascriptreact", "html", "vue", "svelte"],
+  "eslint.validate": ["javascript", "javascriptreact", "vue", "svelte"],
   "typescript.tsdk": "node_modules/typescript/lib",
   "[html]": {
     "editor.formatOnSave": true,
@@ -21,6 +22,10 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -47,5 +52,7 @@
   "[yaml]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "conventionalCommits.gitmoji": false,
+  "conventionalCommits.promptFooter": false
 }
