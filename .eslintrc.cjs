@@ -26,15 +26,6 @@ const config = {
         ignoreRestSiblings: true,
       },
     ],
-    "@typescript-eslint/ban-types": [
-      "error",
-      {
-        types: {
-          "{}": false,
-        },
-        extendDefaults: true,
-      },
-    ],
     "import/no-unresolved": "off",
     "import/newline-after-import": [
       "error",
