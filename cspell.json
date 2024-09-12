@@ -14,7 +14,8 @@
     "Vals",
     "vite",
     "vitest",
-    "wopjs"
+    "wopjs",
+    "yoctocolors"
   ],
   "ignorePaths": [
     "**/coverage/**",
