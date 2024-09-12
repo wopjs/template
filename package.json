@@ -14,6 +14,9 @@
   "scripts": {
     "prepublishOnly": "pnpm run build",
     "lint": "eslint --ext .ts,.tsx . && prettier --check .",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "test:ci": "tsc --noEmit && vitest --coverage --coverage.reporter=lcov --coverage.include=src/**",
     "build": "tsup"
   },
   "keywords": [
@@ -33,13 +36,15 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.4.0",
-    "@typescript-eslint/parser": "^6.4.0",
-    "eslint": "^8.47.0",
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
+    "@typescript-eslint/parser": "^8.2.0",
+    "eslint": "^8.57.0",
     "eslint-config-prettier": "^8.10.0",
     "eslint-plugin-import": "^2.27.5",
     "prettier": "^2.8.8",
-    "tsup": "^6.7.0",
-    "typescript": "^5.1.6"
-  }
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
+    "vitest": "^1.5.0"
+  },
+  "packageManager": "pnpm@9.7.0"
 }

@@ -21,6 +21,7 @@ const config = {
       "error",
       {
         argsIgnorePattern: "^_",
+        varsIgnorePattern: "^_",
         destructuredArrayIgnorePattern: "^_",
         ignoreRestSiblings: true,
       },
