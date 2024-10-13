@@ -13,12 +13,7 @@ export default tsEslint.config(
     ignores: ["**/dist/", "**/public/", "**/docs/", "**/node_modules/"],
   },
   {
-    files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
-    plugins: {
-      "@typescript-eslint": tsEslint.plugin,
-    },
     languageOptions: {
-      parser: tsEslint.parser,
       ecmaVersion: "latest",
       sourceType: "module",
       globals: {
@@ -26,18 +21,6 @@ export default tsEslint.config(
       },
     },
     rules: {
-      "@typescript-eslint/consistent-type-imports": "error",
-      "@typescript-eslint/no-empty-interface": "off",
-      "@typescript-eslint/no-non-null-assertion": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        {
-          argsIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
-          destructuredArrayIgnorePattern: "^_",
-          ignoreRestSiblings: true,
-        },
-      ],
       "import/no-unresolved": "off",
       "import/newline-after-import": [
         "error",
@@ -83,6 +66,29 @@ export default tsEslint.config(
             "type",
           ],
           distinctGroup: false,
+        },
+      ],
+    },
+  },
+  {
+    files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
+    plugins: {
+      "@typescript-eslint": tsEslint.plugin,
+    },
+    languageOptions: {
+      parser: tsEslint.parser,
+    },
+    rules: {
+      "@typescript-eslint/consistent-type-imports": "error",
+      "@typescript-eslint/no-empty-interface": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          destructuredArrayIgnorePattern: "^_",
+          ignoreRestSiblings: true,
         },
       ],
     },

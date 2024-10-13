@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "prepublishOnly": "pnpm run build",
-    "lint": "eslint --ext .ts,.tsx . && prettier --check .",
+    "lint": "eslint && prettier --check .",
     "docs": "typedoc --options typedoc.json",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
