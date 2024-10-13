@@ -32,10 +32,7 @@ export default tsEslint.config(
         "error",
         {
           "newlines-between": "always",
-          alphabetize: {
-            order: "asc",
-            caseInsensitive: true,
-          },
+          alphabetize: { order: "asc", caseInsensitive: true },
           groups: [
             "object",
             "type",
@@ -48,16 +45,8 @@ export default tsEslint.config(
               patternOptions: { matchBase: true },
               group: "object",
             },
-            {
-              pattern: "~/**",
-              group: "internal",
-              position: "after",
-            },
-            {
-              pattern: "../**",
-              group: "parent",
-              position: "before",
-            },
+            { pattern: "~/**", group: "internal", position: "after" },
+            { pattern: "../**", group: "parent", position: "before" },
           ],
           pathGroupsExcludedImportTypes: [
             "builtin",
