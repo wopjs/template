@@ -12,6 +12,7 @@
     "dist"
   ],
   "scripts": {
+    "postinstall": "node scripts/rename.mjs",
     "prepublishOnly": "npm run build",
     "lint": "eslint && prettier --check .",
     "docs": "typedoc --options typedoc.json",
