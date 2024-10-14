@@ -2,32 +2,35 @@ import cp from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
-let user = (
-  exec("basename $(dirname $(git rev-parse --show-toplevel))") || "wopjs"
+const args = process.argv.slice(2);
+
+let repo = (argv("repo") || exec("git remote get-url origin"))
+  .trim()
+  .toLowerCase();
+
+let user = (path.basename(path.dirname(repo)) || "wopjs").toLowerCase();
+
+let repoName = (
+  path.basename(repo, ".git") || path.basename(process.cwd())
 ).toLowerCase();
 
-let name = (
-  exec("basename $(git rev-parse --show-toplevel)") ||
-  path.basename(process.cwd())
-).toLowerCase();
-
-let docsURL = `https://${user.toLowerCase()}.github.io/${name}`;
-let userLink = `[${user}](https://github.com/${user.toLowerCase()})`;
+let pkgName = argv("name") || `@${user}/${repoName}`;
+let docsURL = `https://${user}.github.io/${repoName}`;
+let userLink = `[${user}](https://github.com/${user})`;
 
 let pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
-pkg.name = `@${user.toLowerCase()}/${name}`;
-pkg.description = name;
-pkg.keywords = name.split("-");
-pkg.repository = `${user.toLowerCase()}/${name}`;
+pkg.name = pkgName;
+pkg.description = argv("description") || repoName;
+pkg.keywords = [];
+pkg.repository = repo || `${user}/${repoName}`;
 if (user !== "wopjs") {
   pkg.maintainers = void 0;
 }
-pkg.scripts.postinstall = void 0;
 
 let readme = fs.readFileSync("README.template.md", "utf8");
-readme = readme.replace(/wopjs\/template/g, `${user}/${name}`);
+readme = readme.replace(/wopjs\/template/g, `${user}/${repoName}`);
 readme = readme.replace("https://wopjs.github.io/template", docsURL);
-readme = readme.replace("Collection of common utilities.", `${name}.`);
+readme = readme.replace("Collection of common utilities.", `${repoName}.`);
 readme = readme.replace("[wopjs](https://github.com/wopjs)", userLink);
 
 fs.writeFileSync("package.json", JSON.stringify(pkg, null, 2) + "\n");
@@ -42,6 +45,20 @@ function exec(command) {
   try {
     return String(cp.execSync(command));
   } catch {
-    return null;
+    return "";
   }
+}
+
+function argv(key) {
+  let index = args.indexOf(`--${key}`);
+  if (index > -1) {
+    return args[index + 1] || "";
+  }
+
+  const matchedArg = args.find(arg => arg.startsWith(`--${key}=`));
+  if (matchedArg) {
+    return matchedArg.split("=")[1] || "";
+  }
+
+  return "";
 }
