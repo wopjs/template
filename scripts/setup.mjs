@@ -2,8 +2,14 @@ import cp from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
-let user = "wopjs";
-let name = path.basename(process.cwd()).toLowerCase();
+let user = (
+  exec("basename $(dirname $(git rev-parse --show-toplevel))") || "wopjs"
+).toLowerCase();
+
+let name = (
+  exec("basename $(git rev-parse --show-toplevel)") ||
+  path.basename(process.cwd())
+).toLowerCase();
 
 let docsURL = `https://${user.toLowerCase()}.github.io/${name}`;
 let userLink = `[${user}](https://github.com/${user.toLowerCase()})`;
@@ -31,3 +37,11 @@ fs.rmSync("scripts/setup.mjs");
 
 const win = bin => (process.platform === "win32" ? `${bin}.cmd` : bin);
 cp.spawnSync(win("npm"), ["install"], { stdio: "inherit" });
+
+function exec(command) {
+  try {
+    return String(cp.execSync(command));
+  } catch {
+    return null;
+  }
+}
