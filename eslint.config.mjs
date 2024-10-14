@@ -18,6 +18,7 @@ export default tsEslint.config(
       sourceType: "module",
       globals: {
         console: true,
+        process: true,
       },
     },
     rules: {
