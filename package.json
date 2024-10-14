@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "postinstall": "node scripts/rename.mjs",
-    "prepublishOnly": "pnpm run build",
+    "prepublishOnly": "npm run build",
     "lint": "eslint && prettier --check .",
     "docs": "typedoc --options typedoc.json",
     "test": "vitest",
@@ -54,6 +54,5 @@
     "typescript": "^5.5.4",
     "vitest": "^2.1.2",
     "yoctocolors": "^2.1.1"
-  },
-  "packageManager": "pnpm@9.7.0"
+  }
 }
