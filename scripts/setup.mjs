@@ -16,7 +16,6 @@ let repoName = (
 
 let pkgName = argv("name") || `@${user}/${repoName}`;
 let docsURL = `https://${user}.github.io/${repoName}`;
-let userLink = `[${user}](https://github.com/${user})`;
 
 let pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
 pkg.name = pkgName;
@@ -28,10 +27,10 @@ if (user !== "wopjs") {
 }
 
 let readme = fs.readFileSync("README.template.md", "utf8");
+readme = readme.replace(/@wopjs\/template/g, pkgName);
 readme = readme.replace(/wopjs\/template/g, `${user}/${repoName}`);
 readme = readme.replace("https://wopjs.github.io/template", docsURL);
 readme = readme.replace("Collection of common utilities.", `${repoName}.`);
-readme = readme.replace("[wopjs](https://github.com/wopjs)", userLink);
 
 fs.writeFileSync("package.json", JSON.stringify(pkg, null, 2) + "\n");
 fs.writeFileSync("README.md", readme);

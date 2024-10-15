@@ -13,7 +13,3 @@ Collection of common utilities.
 ```
 npm add @wopjs/template
 ```
-
-## License
-
-MIT @ [wopjs](https://github.com/wopjs)
