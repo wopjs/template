@@ -14,6 +14,8 @@ let repoName = (
   path.basename(repo, ".git") || path.basename(process.cwd())
 ).toLowerCase();
 
+let isWop = user === "wopjs";
+
 let pkgName = argv("name") || `@${user}/${repoName}`;
 let docsURL = `https://${user}.github.io/${repoName}`;
 
@@ -22,7 +24,7 @@ pkg.name = pkgName;
 pkg.description = argv("description") || repoName;
 pkg.keywords = [];
 pkg.repository = repo || `${user}/${repoName}`;
-if (user !== "wopjs") {
+if (!isWop) {
   pkg.maintainers = void 0;
 }
 
@@ -31,6 +33,10 @@ readme = readme.replace(/@wopjs\/template/g, pkgName);
 readme = readme.replace(/wopjs\/template/g, `${user}/${repoName}`);
 readme = readme.replace("https://wopjs.github.io/template", docsURL);
 readme = readme.replace("Collection of common utilities.", `${repoName}.`);
+
+if (isWop) {
+  readme += "\n## License\n\nMIT @ [wopjs](https://github.com/wopjs)\n";
+}
 
 fs.writeFileSync("package.json", JSON.stringify(pkg, null, 2) + "\n");
 fs.writeFileSync("README.md", readme);
