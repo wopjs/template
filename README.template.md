@@ -13,3 +13,17 @@
 ```
 npm add {{pkgName}}
 ```
+
+## Publish New Version
+
+You can use [npm version](https://docs.npmjs.com/cli/v10/commands/npm-version) to bump version.
+
+```
+npm version patch
+```
+
+Push the tag to remote and CI will publish the new version to npm.
+
+```
+git push --follow-tags
+```
