@@ -13,6 +13,7 @@ export default defineConfig({
   sourcemap: true,
   minify: Boolean(process.env.MINIFY),
   esbuildOptions: options => {
+    options.sourcesContent = false;
     options.mangleProps = /[^_]_$/;
     options.mangleCache = mangleCache;
   },
