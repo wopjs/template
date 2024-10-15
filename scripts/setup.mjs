@@ -23,7 +23,8 @@ let pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
 pkg.name = pkgName;
 pkg.description = description;
 pkg.keywords = [];
-pkg.repository = repo || `${author}/${repoName}`;
+pkg.repository =
+  repo && !repo.includes("github") ? repo : `${author}/${repoName}`;
 if (!isWop) {
   pkg.maintainers = void 0;
 }
