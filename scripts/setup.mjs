@@ -17,35 +17,62 @@ let repoName = (
 let isWop = author === "wopjs";
 
 let pkgName = argv("name") || `@${author}/${repoName}`;
+
 let description = argv("description") || repoName;
 
-let pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
-pkg.name = pkgName;
-pkg.description = description;
-pkg.keywords = [];
-pkg.repository =
-  repo && !repo.includes("github") ? repo : `${author}/${repoName}`;
-if (!isWop) {
-  pkg.maintainers = void 0;
+// #region package.json
+{
+  let pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
+  pkg.name = pkgName;
+  pkg.description = description;
+  pkg.keywords = [];
+  pkg.repository =
+    repo && !repo.includes("github") ? repo : `${author}/${repoName}`;
+  if (!isWop) {
+    pkg.maintainers = void 0;
+  }
+  fs.writeFileSync("package.json", JSON.stringify(pkg, null, 2) + "\n");
 }
+// #endregion
 
-let readme = fs.readFileSync("README.template.md", "utf8");
-readme = readme.replaceAll("{{pkgName}}", pkgName);
-readme = readme.replaceAll("{{author}}", author);
-readme = readme.replaceAll("{{repoName}}", repoName);
-readme = readme.replaceAll("{{description}}", description);
-
-if (isWop) {
-  readme += "\n## License\n\nMIT @ [wopjs](https://github.com/wopjs)\n";
+// #region README.md
+{
+  let readme = fs.readFileSync("README.template.md", "utf8");
+  readme = readme.replaceAll("{{pkgName}}", pkgName);
+  readme = readme.replaceAll("{{author}}", author);
+  readme = readme.replaceAll("{{repoName}}", repoName);
+  readme = readme.replaceAll("{{description}}", description);
+  fs.writeFileSync("README.md", readme);
+  if (isWop) {
+    readme += "\n## License\n\nMIT @ [wopjs](https://github.com/wopjs)\n";
+  }
+  fs.rmSync("README.template.md");
 }
+// #endregion
 
-fs.writeFileSync("package.json", JSON.stringify(pkg, null, 2) + "\n");
-fs.writeFileSync("README.md", readme);
-fs.rmSync("README.template.md");
-fs.rmSync("scripts/setup.mjs");
+// #region LICENSE.txt
+{
+  let license = fs.readFileSync("LICENSE.txt", "utf8");
+  license = license.replace(
+    "Copyright (c) 2023 wopjs",
+    `Copyright (c) ${new Date().getFullYear()} ${author}`
+  );
+  fs.writeFileSync("LICENSE.txt", license);
+}
+// #endregion
 
-const win = bin => (process.platform === "win32" ? `${bin}.cmd` : bin);
-cp.spawnSync(win("npm"), ["install"], { stdio: "inherit" });
+// #region Clean up
+{
+  fs.rmSync("scripts/setup.mjs");
+}
+// #endregion
+
+// #region Install dependencies
+{
+  const win = bin => (process.platform === "win32" ? `${bin}.cmd` : bin);
+  cp.spawnSync(win("npm"), ["install"], { stdio: "inherit" });
+}
+// #endregion
 
 function exec(command) {
   try {
