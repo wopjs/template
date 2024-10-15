@@ -8,31 +8,31 @@ let repo = (argv("repo") || exec("git remote get-url origin"))
   .trim()
   .toLowerCase();
 
-let user = (path.basename(path.dirname(repo)) || "wopjs").toLowerCase();
+let author = (path.basename(path.dirname(repo)) || "wopjs").toLowerCase();
 
 let repoName = (
   path.basename(repo, ".git") || path.basename(process.cwd())
 ).toLowerCase();
 
-let isWop = user === "wopjs";
+let isWop = author === "wopjs";
 
-let pkgName = argv("name") || `@${user}/${repoName}`;
-let docsURL = `https://${user}.github.io/${repoName}`;
+let pkgName = argv("name") || `@${author}/${repoName}`;
+let description = argv("description") || repoName;
 
 let pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
 pkg.name = pkgName;
-pkg.description = argv("description") || repoName;
+pkg.description = description;
 pkg.keywords = [];
-pkg.repository = repo || `${user}/${repoName}`;
+pkg.repository = repo || `${author}/${repoName}`;
 if (!isWop) {
   pkg.maintainers = void 0;
 }
 
 let readme = fs.readFileSync("README.template.md", "utf8");
-readme = readme.replace(/@wopjs\/template/g, pkgName);
-readme = readme.replace(/wopjs\/template/g, `${user}/${repoName}`);
-readme = readme.replace("https://wopjs.github.io/template", docsURL);
-readme = readme.replace("Collection of common utilities.", `${repoName}.`);
+readme = readme.replaceAll("{{pkgName}}", pkgName);
+readme = readme.replaceAll("{{author}}", author);
+readme = readme.replaceAll("{{repoName}}", repoName);
+readme = readme.replaceAll("{{description}}", description);
 
 if (isWop) {
   readme += "\n## License\n\nMIT @ [wopjs](https://github.com/wopjs)\n";
