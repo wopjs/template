@@ -27,3 +27,7 @@ Push the tag to remote and CI will publish the new version to npm.
 ```
 git push --follow-tags
 ```
+
+### CI Publish
+
+If you want to publish the package in CI, you need to set the `NPM_TOKEN` secrets [in GitHub repository settings](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository). See how to [create a NPM access token](https://docs.npmjs.com/creating-and-viewing-access-tokens).
