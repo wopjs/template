@@ -22,6 +22,7 @@ export default tsEslint.config(
       },
     },
     rules: {
+      "prefer-const": "off",
       "import/no-unresolved": "off",
       "import/newline-after-import": [
         "error",
