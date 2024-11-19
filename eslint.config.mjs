@@ -1,4 +1,5 @@
 import jsEslint from "@eslint/js";
+import gitignore from "eslint-config-flat-gitignore";
 import eslintConfigPrettier from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
 import tsEslint from "typescript-eslint";
@@ -9,9 +10,7 @@ export default tsEslint.config(
   importPlugin.flatConfigs.recommended,
   importPlugin.flatConfigs.typescript,
   eslintConfigPrettier,
-  {
-    ignores: ["**/dist/", "**/public/", "**/docs/", "**/node_modules/"],
-  },
+  gitignore(),
   {
     languageOptions: {
       ecmaVersion: "latest",
