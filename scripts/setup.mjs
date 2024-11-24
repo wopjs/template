@@ -4,15 +4,11 @@ import path from "node:path";
 
 const args = process.argv.slice(2);
 
-let repo = (argv("repo") || exec("git remote get-url origin"))
-  .trim()
-  .toLowerCase();
+let repo = (argv("repo") || exec("git remote get-url origin")).trim().toLowerCase();
 
 let author = (path.basename(path.dirname(repo)) || "wopjs").toLowerCase();
 
-let repoName = (
-  path.basename(repo, ".git") || path.basename(process.cwd())
-).toLowerCase();
+let repoName = (path.basename(repo, ".git") || path.basename(process.cwd())).toLowerCase();
 
 let isWop = author === "wopjs";
 
@@ -26,8 +22,7 @@ let description = argv("description") || repoName;
   pkg.name = pkgName;
   pkg.description = description;
   pkg.keywords = [];
-  pkg.repository =
-    repo && !repo.includes("github") ? repo : `${author}/${repoName}`;
+  pkg.repository = repo && !repo.includes("github") ? repo : `${author}/${repoName}`;
   if (!isWop) {
     pkg.maintainers = void 0;
   }
@@ -53,10 +48,7 @@ let description = argv("description") || repoName;
 // #region LICENSE.txt
 {
   let license = fs.readFileSync("LICENSE.txt", "utf8");
-  license = license.replace(
-    "Copyright (c) 2023 wopjs",
-    `Copyright (c) ${new Date().getFullYear()} ${author}`
-  );
+  license = license.replace("Copyright (c) 2023 wopjs", `Copyright (c) ${new Date().getFullYear()} ${author}`);
   fs.writeFileSync("LICENSE.txt", license);
 }
 // #endregion
