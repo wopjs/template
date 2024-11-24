@@ -66,14 +66,6 @@ let description = argv("description") || repoName;
 }
 // #endregion
 
-function exec(command) {
-  try {
-    return String(cp.execSync(command));
-  } catch {
-    return "";
-  }
-}
-
 function argv(key) {
   let index = args.indexOf(`--${key}`);
   if (index > -1) {
@@ -86,4 +78,12 @@ function argv(key) {
   }
 
   return "";
+}
+
+function exec(command) {
+  try {
+    return String(cp.execSync(command));
+  } catch {
+    return "";
+  }
 }
