@@ -1,7 +1,7 @@
 import jsEslint from "@eslint/js";
 import gitignore from "eslint-config-flat-gitignore";
 import eslintConfigPrettier from "eslint-config-prettier";
-import importPlugin from "eslint-plugin-import";
+import importX from "eslint-plugin-import-x";
 import perfectionist from "eslint-plugin-perfectionist";
 import tsEslint from "typescript-eslint";
 
@@ -9,7 +9,7 @@ export default tsEslint.config(
   jsEslint.configs.recommended,
   ...tsEslint.configs.recommended,
   eslintConfigPrettier,
-  importPlugin.flatConfigs.recommended,
+  importX.flatConfigs.recommended,
   perfectionist.configs["recommended-natural"],
   gitignore(),
   {
@@ -28,9 +28,10 @@ export default tsEslint.config(
   },
   {
     rules: {
-      "import/consistent-type-specifier-style": ["error", "prefer-inline"],
-      "import/no-duplicates": ["error", { considerQueryString: true, "prefer-inline": true }],
-      "import/no-unresolved": "off",
+      "import-x/consistent-type-specifier-style": ["error", "prefer-inline"],
+      "import-x/no-duplicates": ["error", { considerQueryString: true, "prefer-inline": true }],
+      "import-x/no-unresolved": "off",
+      "import-x/order": "off",
       "perfectionist/sort-imports": [
         "error",
         {
