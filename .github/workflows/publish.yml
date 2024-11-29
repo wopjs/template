@@ -25,7 +25,11 @@ jobs:
           cache: npm
 
       - name: Install dependencies 📦
-        run: npm install
+        run: npm ci
+        env:
+          npm_config_audit: "false"
+          npm_config_fund: "false"
+          npm_config_loglevel: "error"
 
       - name: Build 🔧
         run: npm run build
