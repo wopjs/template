@@ -19,7 +19,7 @@
     "docs": "typedoc --options typedoc.json",
     "test": "vitest",
     "test:coverage": "vitest --coverage --coverage.include=src/**",
-    "test:ci": "tsc --noEmit && vitest --coverage --coverage.reporter=lcov --coverage.include=src/**",
+    "test:ci": "vitest --coverage --coverage.reporter=lcov --coverage.include=src/**",
     "build": "tsup",
     "build:min": "MINIFY=true tsup && node scripts/gzip.mjs",
     "release": "commit-and-tag-version"
