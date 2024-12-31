@@ -16,7 +16,7 @@
     "lint": "eslint && prettier --check .",
     "lint:fix": "eslint --fix && prettier --write .",
     "ts-check": "tsc --noEmit",
-    "docs": "typedoc --options typedoc.json",
+    "docs": "typedoc --options typedoc.json && prettier --ignore-path .prettierignore --write docs",
     "test": "vitest",
     "test:coverage": "vitest --coverage --coverage.include=src/**",
     "test:ci": "vitest --coverage --coverage.reporter=lcov --coverage.include=src/**",
