@@ -1,11 +1,6 @@
 {
-  "printWidth": 120,
-  "trailingComma": "all",
-  "tabWidth": 2,
-  "semi": true,
-  "singleQuote": false,
-  "endOfLine": "auto",
   "arrowParens": "avoid",
+  "endOfLine": "auto",
   "overrides": [
     {
       "files": "*.json",
@@ -13,5 +8,10 @@
         "printWidth": 80
       }
     }
-  ]
+  ],
+  "printWidth": 120,
+  "semi": true,
+  "singleQuote": false,
+  "tabWidth": 2,
+  "trailingComma": "all"
 }

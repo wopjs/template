@@ -69,17 +69,14 @@ export default tsEslint.config(
     files: [
       "src/**/*.json",
       "scripts/**/*.json",
-      "ts-config.json",
+      "tsconfig.json",
       ".prettierrc.json",
+      ".prettierrc",
       "typedoc.json",
       "mangle-cache.json",
     ],
     rules: {
       "jsonc/sort-keys": ["error", "asc", { caseSensitive: true, minKeys: 2, natural: true }],
     },
-  },
-  {
-    extends: [...jsonc.configs["flat/recommended-with-jsonc"]],
-    files: ["**/*.jsonc", ".vscode/*.json"],
   },
 );
