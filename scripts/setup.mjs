@@ -48,7 +48,7 @@ let description = argv("description") || repoName;
 // #region LICENSE.txt
 {
   let license = fs.readFileSync("LICENSE.txt", "utf8");
-  license = license.replace("Copyright (c) 2023 wopjs", `Copyright (c) ${new Date().getFullYear()} ${author}`);
+  license = license.replace(/Copyright \(c\) \d\d\d\d wopjs/, `Copyright (c) ${new Date().getFullYear()} ${author}`);
   fs.writeFileSync("LICENSE.txt", license);
 }
 // #endregion
