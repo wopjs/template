@@ -47,9 +47,19 @@ let description = argv("description") || repoName;
 
 // #region LICENSE.txt
 {
-  let license = fs.readFileSync("LICENSE.txt", "utf8");
+  const licensePath = "LICENSE.txt";
+  let license = fs.readFileSync(licensePath, "utf8");
   license = license.replace(/Copyright \(c\) \d\d\d\d wopjs/, `Copyright (c) ${new Date().getFullYear()} ${author}`);
-  fs.writeFileSync("LICENSE.txt", license);
+  fs.writeFileSync(licensePath, license);
+}
+// #endregion
+
+// #region dependabot
+{
+  const dependabotPath = ".github/dependabot.yml";
+  let dependabot = fs.readFileSync(dependabotPath, "utf8");
+  dependabot = dependabot.replaceAll(`interval: "weekly"`, `interval: "monthly"`);
+  fs.writeFileSync(dependabotPath, dependabot);
 }
 // #endregion
 
