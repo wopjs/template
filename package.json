@@ -42,13 +42,13 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@vitest/coverage-v8": "^4.0.8",
-    "@wopjs/eslint-config": "^0.1.49",
-    "@wopjs/gzip-size": "^0.1.4",
+    "@vitest/coverage-v8": "^4.0.10",
+    "@wopjs/eslint-config": "^0.1.50",
+    "@wopjs/gzip-size": "^0.1.5",
     "commit-and-tag-version": "^12.6.0",
     "eslint": "^9.39.1",
     "prettier": "^3.6.2",
-    "tsup": "^8.5.0",
+    "tsup": "^8.5.1",
     "typedoc": "^0.28.14",
     "typescript": "^5.9.3",
     "vitest": "^4.0.4"
