@@ -42,8 +42,8 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@vitest/coverage-v8": "^4.0.10",
-    "@wopjs/eslint-config": "^0.1.50",
+    "@vitest/coverage-v8": "^4.0.13",
+    "@wopjs/eslint-config": "^0.1.51",
     "@wopjs/gzip-size": "^0.1.5",
     "commit-and-tag-version": "^12.6.0",
     "eslint": "^9.39.1",
