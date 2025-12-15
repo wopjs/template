@@ -46,7 +46,7 @@
     "@wopjs/eslint-config": "^0.1.53",
     "@wopjs/gzip-size": "^0.1.5",
     "commit-and-tag-version": "^12.6.1",
-    "eslint": "^9.39.1",
+    "eslint": "^9.39.2",
     "prettier": "^3.7.4",
     "tsup": "^8.5.1",
     "typedoc": "^0.28.15",
