@@ -32,4 +32,4 @@ git push --follow-tags
 
 ### CI Auto Publish
 
-If you want to publish the package in CI, you need to set the `NPM_TOKEN` secrets [in GitHub repository settings](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository). See how to [create a NPM access token](https://docs.npmjs.com/creating-and-viewing-access-tokens).
+If you want to publish the package in CI, you need to enable [trusted publishing](https://docs.npmjs.com/trusted-publishers) in npmjs.com. However, the [settings page](https://www.npmjs.com/package/{{pkgName}}/access) is only visible when the package already exists. So you will have to publish the package manually for the first time.
