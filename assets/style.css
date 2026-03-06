@@ -445,11 +445,7 @@
     margin: var(--dim-container-main-margin-y) auto;
     /* toolbar, footer, margin */
     min-height: calc(
-      100svh -
-      var(--dim-header-height) -
-      var(--dim-footer-height) -
-      2 *
-      var(--dim-container-main-margin-y)
+      100svh - var(--dim-header-height) - var(--dim-footer-height) - 2 * var(--dim-container-main-margin-y)
     );
   }
 
@@ -1565,11 +1561,7 @@
   @media (min-width: 770px) and (max-width: 1399px) {
     .col-sidebar {
       max-height: calc(
-        100vh -
-        var(--dim-header-height) -
-        var(--dim-footer-height) -
-        2 *
-        var(--dim-container-main-margin-y)
+        100vh - var(--dim-header-height) - var(--dim-footer-height) - 2 * var(--dim-container-main-margin-y)
       );
       overflow: auto;
       position: sticky;
@@ -1606,11 +1598,7 @@
     .page-menu,
     .site-menu {
       max-height: calc(
-        100vh -
-        var(--dim-header-height) -
-        var(--dim-footer-height) -
-        2 *
-        var(--dim-container-main-margin-y)
+        100vh - var(--dim-header-height) - var(--dim-footer-height) - 2 * var(--dim-container-main-margin-y)
       );
       overflow: auto;
       position: sticky;
