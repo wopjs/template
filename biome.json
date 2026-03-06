@@ -19,6 +19,9 @@
     "rules": {
       "suspicious": {
         "noExplicitAny": "off"
+      },
+      "complexity": {
+        "noUselessLoneBlockStatements": "off"
       }
     }
   }
