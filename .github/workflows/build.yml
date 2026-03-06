@@ -10,7 +10,8 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js 🟢
+        uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: npm
@@ -24,22 +25,20 @@ jobs:
 
       - name: Lint 🧹
         run: |
-          npm run lint
+          npm run lint:ci
           npm run ts-check
 
       - name: Build 🔧
         run: npm run build
 
+      - name: Build Docs 📖
+        run: npm run docs
+
       - name: Test 🧪
         run: npm run test:ci
 
-      # - name: Coveralls 🎉
-      #   uses: coverallsapp/github-action@v2
-      #   with:
-      #     github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build Docs 📖
-        run: npm run docs
+      - name: Create Coverage Badge 🏷️
+        run: npx coverage-badge-svg
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
