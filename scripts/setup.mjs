@@ -37,10 +37,10 @@ let description = argv("description") || repoName;
   readme = readme.replaceAll("{{author}}", author);
   readme = readme.replaceAll("{{repoName}}", repoName);
   readme = readme.replaceAll("{{description}}", description);
-  fs.writeFileSync("README.md", readme);
   if (isWop) {
     readme += "\n## License\n\nMIT @ [wopjs](https://github.com/wopjs)\n";
   }
+  fs.writeFileSync("README.md", readme);
   fs.rmSync("README.template.md");
 }
 // #endregion
