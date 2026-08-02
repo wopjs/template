@@ -33,6 +33,7 @@
   color: var(--hl-0);
 }
 pre,
-code {
+code,
+math[display="block"] {
   background: var(--code-background);
 }
