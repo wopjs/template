@@ -43,7 +43,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^26.3.0",
-    "@vitest/coverage-v8": "^4.1.11",
+    "@vitest/coverage-v8": "^5.0.0",
     "@wopjs/eslint-config": "^0.1.82",
     "@wopjs/gzip-size": "^0.1.5",
     "commit-and-tag-version": "^13.1.2",
